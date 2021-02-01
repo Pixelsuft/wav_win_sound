@@ -34,7 +34,7 @@ You must has internet before start first playing after installation<br />
 
 setuptools_setup(
     name="wav_win_sound",
-    version = "1.0.1",
+    version = "1.0.5",
     author = "Pixelsuft",
     description = "Play WAV Sounds (Windows ONLY!)",
     long_description = long_description,

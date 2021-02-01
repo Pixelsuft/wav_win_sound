@@ -32,11 +32,11 @@ class Mixer():
     
     def check_player(self):
         if not file_exists(play_sound_path + 'play_sound.exe', file_exists_param):
-            #try:
-            download('play_sound.exe', play_sound_path + 'play_sound.exe')
-            return True
-            #except:
-            #    return False
+            try:
+                download('https://github.com/Pixelsuft/wav_win_sound/raw/main/wav_win_sound/play_sound.exe', play_sound_path + 'play_sound.exe')
+                return True
+            except:
+                return False
         else:
             return True
     
