@@ -55,6 +55,8 @@ class Mixer():
                 run_sync_cmd(self.cmd_line, shell = True)
             except KeyboardInterrupt:
                 print('\n', end = '')
+            except:
+                pass
     
     def async_play(self):
         if self.check_player() == True:
@@ -67,6 +69,8 @@ class Mixer():
                 run_async_cmd(self.cmd_line, shell = True)
             except KeyboardInterrupt:
                 print('\n', end = '')
+            except:
+                pass
     
     def stop(self):
         try:
