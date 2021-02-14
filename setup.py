@@ -34,7 +34,7 @@ You must has internet before start first playing after installation<br />
 
 setuptools_setup(
     name="wav_win_sound",
-    version = "1.0.6",
+    version = "1.0.7",
     author = "Pixelsuft",
     description = "Play WAV Sounds (Windows ONLY!)",
     long_description = long_description,
@@ -49,6 +49,6 @@ setuptools_setup(
     python_requires='>=3.5',
     license='MIT', 
     keywords='wav_win_sound',
-    install_requires=[''],
-    py_modules=['wav_win_sound', 'parse_args']
+    install_requires=['parse_args', 'urllib3'],
+    py_modules=['wav_win_sound']
 )

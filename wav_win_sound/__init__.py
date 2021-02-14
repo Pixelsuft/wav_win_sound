@@ -29,6 +29,8 @@ class Mixer():
     def __init__(self, **kwargs):
         self.sound_list = []
         self.cmd_line = ''
+        self.is_playing = False
+    
     
     def check_player(self):
         if not file_exists(play_sound_path + 'play_sound.exe', file_exists_param):
@@ -40,6 +42,7 @@ class Mixer():
         else:
             return True
     
+    
     def load(self, filenames):
         if self.check_player() == True:
             self.sound_list = [play_sound_path + 'play_sound.exe']
@@ -49,14 +52,18 @@ class Mixer():
                 self.sound_list.append(str(filenames))
             self.cmd_line = set_args(self.sound_list)
     
+    
     def sync_play(self):
         if self.check_player() == True:
             try:
+                self.is_playing = True
                 run_sync_cmd(self.cmd_line, shell = True)
-            except KeyboardInterrupt:
-                print('\n', end = '')
+                self.is_playing = False
+                return True
             except:
-                pass
+                self.is_playing = False
+                return False
+    
     
     def async_play(self):
         if self.check_player() == True:
@@ -67,13 +74,15 @@ class Mixer():
         if self.check_player() == True:
             try:
                 run_async_cmd(self.cmd_line, shell = True)
-            except KeyboardInterrupt:
-                print('\n', end = '')
+                return True
             except:
-                pass
+                return False
+    
     
     def stop(self):
         try:
             run_sync_cmd('taskkill /f /im play_sound.exe', shell = True)
-        except KeyboardInterrupt:
-            print('\n', end = '')
+            self.is_playing = False
+            return True
+        except:
+            return False
